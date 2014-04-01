@@ -1,4 +1,7 @@
+
 var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-    viewer.load("ISBN:<%= @isbn %>", alertNotFound);
+    var number = <%= @isbn %>;
+    console.log("ISBN is"+number);
+    viewer.load("ISBN:<%= @isbn %>");
 $("#keyword").val("");
 
