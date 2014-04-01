@@ -15,7 +15,7 @@
       <!-- //end function to allow "enter" to send form -->
 
       <!-- //function to load viewer -->
-          $("input#search").on("click", function(e){
+          $("button").on("click", function(e){
             
             $.getScript("<%= preview_path %>", function(e){
                 $("#myModal").modal('toggle');
