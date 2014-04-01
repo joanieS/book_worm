@@ -30,9 +30,22 @@ Any things in particular you'd like to see in pull requests?
 
 Currently working on:
 
-1. Scraping data on page load
-2. Caching data for a session
-3. Implementing modal "next" functionality
+1. Scraping data on page load :)
+2. Caching data for a session :)
+3. Implementing modal "next" functionality :)
+4. :(
+
+Tomorrow:
+1. Integrate Google API function to check for preview (squash bug)
+2. Add method to ensure no duplicate books (use flash?)
+3. Expand data set
+4. Consider "plus" and "minus" functionality
+
+Future:
+1. Worry about search
+2. Think about database
+3. Maybe have some users
+4. Make it pretty
 
 ## Author
 
