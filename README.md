@@ -28,8 +28,11 @@ Any things in particular you'd like to see in pull requests?
 
 ## Future
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
+Currently working on:
+
+1. Scraping data on page load
+2. Caching data for a session
+3. Implementing modal "next" functionality
 
 ## Author
 
