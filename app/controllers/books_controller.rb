@@ -1,15 +1,22 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  include BooksHelper
 
   # GET /books
   # GET /books.json
   def index
     @books = Book.all
+    @isbn = find_isbn
   end
 
   # GET /books/1
   # GET /books/1.json
   def show
+
+  end
+
+  def preview
+    @isbn = find_isbn
   end
 
   # GET /books/new
