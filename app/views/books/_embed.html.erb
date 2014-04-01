@@ -15,10 +15,12 @@
       <!-- //end function to allow "enter" to send form -->
 
       <!-- //function to load viewer -->
-          $("button").on("click", function(e){
+          $("button#search").on("click", function(e){
             
             $.getScript("<%= preview_path %>", function(e){
-                $("#myModal").modal('toggle');
+                $("#myModal").modal('toggle', function(){
+
+                });
             });
         });
           
