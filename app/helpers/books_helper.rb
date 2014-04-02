@@ -12,16 +12,23 @@ module BooksHelper
     end
   end
 
+  def find_single_isbn(book)
+    title = book.title
+    book_info = GoogleBooks.search(title).first
+    book.isbn = book_info.isbn
+    
+  end
+
   def find_isbn
     title = Book.all.sample.title
-    @book = {title:"", release_date: "", isbn:"", excerpt:"", authors:""}
+    book_obj = {title:"", release_date: "", isbn:"", excerpt:"", authors:""}
     # book_info = nil
     # while !book_info
     #   book_info = GoogleBooks.search(title).first
     # end
     book_info = GoogleBooks.search(title).first
-    @book = {title: book_info.title, release_date: book_info.published_date, isbn: book_info.isbn, excerpt:book_info.preview_link, authors:book_info.authors_array}
-    @book[:isbn]
+    book_obj = {title: book_info.title, release_date: book_info.published_date, isbn: book_info.isbn, excerpt:book_info.preview_link, authors:book_info.authors_array}
+    book_obj[:isbn]
   end
 
   # def otherwise

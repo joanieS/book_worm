@@ -10,7 +10,10 @@ class BooksController < ApplicationController
   end
 
   def preview
-    @isbn = find_isbn
+    # Book.all.each do |book|
+      @isbn = find_isbn
+
+    # end
   end
 
   # GET /books/new

@@ -46,10 +46,10 @@ group :test, :development do
   gem "database_cleaner"
   gem "sqlite3"
   gem "pry"
-  gem "vcr"
 end
 
 group :test do
+  gem "vcr"
   gem "webmock"
 end
 
