@@ -1,16 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+
   <title>BookWormProject</title>
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
+
   <%= javascript_include_tag 'application' %>
+
   <script type="text/javascript" src="http://books.google.com/books/previewlib.js"></script>
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 </head>
-<body>
+<body class="theme=invert">
+<nav class="mainmenu">
+    <div class="container">
+        <div class="dropdown">
+            <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <!-- <a data-toggle="dropdown" href="#">Dropdown trigger</a> -->
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a href="#head" class="active">Hello</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#themes">Themes</a></li>
+                <li><a href="#contact">Get in touch</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<%= yield %>
+<!-- Main section -->
+<section class="section" id="head">
+    <div class="container">
 
+        <div class="row">
+            <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">   
+
+
+                <h1 class="title">Welcome to BookWorm</h1>
+                <h2 class="subtitle">A digital bookstore exploration</h2>
+
+                <%= yield %>
+                
+    
+            </div> <!-- /col -->
+        </div> <!-- /row -->
+    
+    </div>
+</section>
+
+<!-- Load js libs only when the page is loaded. -->
+<!-- Custom template scripts -->
+<link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
 </body>
 </html>
