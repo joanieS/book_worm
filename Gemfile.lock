@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:laserlemon/figaro.git
+  revision: 7261234e1415f429bd2c972b568e89d639127b46
+  specs:
+    figaro (0.7.0)
+      rails (>= 3, < 5)
+      thor (~> 0.14)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -208,6 +216,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails
+  figaro!
   google-analytics-rails
   googlebooks
   jbuilder (~> 2.0)
