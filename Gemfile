@@ -34,6 +34,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'figaro', git: 'git@github.com:laserlemon/figaro.git'
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
@@ -46,10 +48,10 @@ group :test, :development do
   gem "database_cleaner"
   gem "sqlite3"
   gem "pry"
-  gem "vcr"
 end
 
 group :test do
+  gem "vcr"
   gem "webmock"
 end
 
