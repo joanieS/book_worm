@@ -6,11 +6,16 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    find_books
+    flash[:notice] = find_books.to_s
   end
 
   def preview
     @isbn = find_isbn
+    if flash[:notice] == @isbn.to_s 
+      redirect_to "preview_path"
+    else 
+      @isbn
+    end
   end
 
   # GET /books/new
