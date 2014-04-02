@@ -4,6 +4,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'simplecov'
+require 'webmock/rspec'
+
 SimpleCov.start 'rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -13,6 +15,18 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.debug_logger = File.open('spec/fixtures/debug.log', 'w')
+end
+
+def use_vcr(cassette_name, &expectation)
+  VCR.use_cassette(cassette_name, record: :new_episodes, decode_compressed_response: true) do
+    yield
+  end
+end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
