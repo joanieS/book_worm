@@ -11,14 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331214501) do
+ActiveRecord::Schema.define(version: 20140402204750) do
+
+  create_table "authors", force: true do |t|
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "book_authors", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "book_genres", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "genre_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "books", force: true do |t|
-    t.string   "title"
-    t.string   "author"
-    t.string   "isbn"
-    t.string   "release_date"
-    t.string   "excerpt"
+    t.text     "title",        limit: 255
+    t.text     "isbn",         limit: 255
+    t.text     "release_date", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genres", force: true do |t|
+    t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
