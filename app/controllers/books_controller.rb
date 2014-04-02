@@ -1,19 +1,20 @@
 class BooksController < ApplicationController
-  before_action :clear_database, :only => [:index]
+  # before_action :clear_database, :only => [:index]
 
-  include BooksHelper
+  # include BooksHelper
 
   # GET /books
   # GET /books.json
   def index
-    flash[:notice] = find_books.to_s
+    flash[:notice] = ""
   end
 
   def preview
-    @isbn = find_isbn
+    @isbn = Book.all.sample.isbn
     if flash[:notice] == @isbn.to_s 
       redirect_to "preview_path"
     else 
+      flash[:isbn] = @isbn
       @isbn
     end
   end
