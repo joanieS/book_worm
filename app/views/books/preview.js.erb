@@ -2,6 +2,11 @@
 var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
     var number = <%= @isbn %>;
     console.log("ISBN is"+number);
-    viewer.load("ISBN:<%= @isbn %>");
+    viewer.load("ISBN:<%= @isbn %>", alertNotFound);
 // $("#keyword").val("");
 
+function alertNotFound() {
+    console.log("oops!");
+  $.getScript("<%= preview_path %>", function(e){
+  });
+}
