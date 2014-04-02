@@ -35,6 +35,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'figaro', git: 'git@github.com:laserlemon/figaro.git'
+gem 'typhoeus'
 
 group :test, :development do
   gem "rspec-rails"
