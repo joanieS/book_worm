@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140402204750) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authors", force: true do |t|
     t.text     "name"
     t.datetime "created_at"
@@ -34,9 +37,9 @@ ActiveRecord::Schema.define(version: 20140402204750) do
   end
 
   create_table "books", force: true do |t|
-    t.text     "title",        limit: 255
-    t.text     "isbn",         limit: 255
-    t.text     "release_date", limit: 255
+    t.text     "title"
+    t.text     "isbn"
+    t.text     "release_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
