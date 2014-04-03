@@ -38,35 +38,34 @@ class Book < ActiveRecord::Base
   end
 
   def self.find_book(title, author)
-    request = Typhoeus::Request.new(
-    "https://www.googleapis.com/books/v1/volumes",
-    params: { q: CGI::escape("#{title}"), filter: "partial", key: ENV["GOOGLE_BOOKS_API_KEY"]},
-    )
-
-    response = request.run
-
-    my_stuff = JSON.parse(response.body)
-    option = my_stuff["items"].first
-    if option["volumeInfo"]["title"].match(title) && option["volumeInfo"]["authors"].include?(author)
-      author_names = option["volumeInfo"]["authors"]
-      isbn = option["volumeInfo"]["industryIdentifiers"].first["identifier"]
-      genre_names = option["volumeInfo"]["categories"]
-      release_date = option["volumeInfo"]["publishedDate"]
-      title = option["volumeInfo"]["title"]
-
-      puts "Trying to save #{title}..."
-
-      book = Book.new(
-        title: title, 
-        release_date: release_date, 
-        author_names: author_names,
-        genre_names: genre_names,
-        isbn: isbn  
+    book = Book.find_or_initialize_by(title: title)
+    unless book.persisted?
+      request = Typhoeus::Request.new(
+      "https://www.googleapis.com/books/v1/volumes",
+      params: { q: CGI::escape("#{title}"), filter: "partial", key: ENV["GOOGLE_BOOKS_API_KEY"]},
       )
 
-      book.save unless book.persisted?
-    else
-      puts "Rejected!"
+      response = request.run
+
+      my_stuff = JSON.parse(response.body)
+      option = my_stuff["items"].first
+      if option["volumeInfo"]["title"].match(title) && option["volumeInfo"]["authors"].include?(author)
+        author_names = option["volumeInfo"]["authors"]
+        isbn = option["volumeInfo"]["industryIdentifiers"].first["identifier"]
+        genre_names = option["volumeInfo"]["categories"]
+        release_date = option["volumeInfo"]["publishedDate"]
+
+        logger.info("Saving #{title}...")
+
+        book.update(
+          release_date: release_date, 
+          author_names: author_names, 
+          genre_names: genre_names,
+          isbn: isbn
+        )
+      else
+        logger.info("We did not find a preview for #{title}.")
+      end
     end
   end
 
