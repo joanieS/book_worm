@@ -48,7 +48,6 @@ class Book < ActiveRecord::Base
       "http://www.goodreads.com/list/show/453.Best_Philosophical_Literature"
     ]
     urls.each do |url|
-      logger.info("On #{url}")
       puts "On #{url}"
       results = Book.find_titles(url)
       results.each do |result|
@@ -85,7 +84,6 @@ class Book < ActiveRecord::Base
           genre_names = option["volumeInfo"]["categories"]
           release_date = option["volumeInfo"]["publishedDate"]
 
-          logger.info("Saving #{title}...")
           puts "Saving #{title}..."
 
           book.update(
@@ -95,11 +93,9 @@ class Book < ActiveRecord::Base
             isbn: isbn
           )
         else
-          logger.info("We did not find a preview for #{title}.")
           puts "We did not find a preview for #{title}."
         end
       rescue
-        logger.info("We're missing info!")
         puts "We're missing info!"
         return
       end
