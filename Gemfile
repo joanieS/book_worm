@@ -34,7 +34,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'figaro', git: 'git@github.com:laserlemon/figaro.git'
+gem 'figaro', git: 'https://github.com/laserlemon/figaro.git'
 gem 'typhoeus'
 
 group :test, :development do
