@@ -11,7 +11,7 @@ class BooksController < ApplicationController
 
   def preview
     @isbn = Book.all.sample.isbn
-    if session[:isbn] == @isbn.to_s 
+    if session[:isbn] == @isbn
       redirect_to "preview_path"
     else 
       session[:isbn] = @isbn
