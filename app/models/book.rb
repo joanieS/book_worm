@@ -64,7 +64,7 @@ class Book < ActiveRecord::Base
     end
   end
 
-  def self.find_book(title, author)
+  def self.find_book(title, author)  
     book = Book.find_or_initialize_by(title: title)
     unless book.persisted?
       request = Typhoeus::Request.new(

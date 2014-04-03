@@ -1,17 +1,18 @@
 <!DOCTYPE html>
+<link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
 <html>
 <head>
-<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+
+  <script type="text/javascript" src="http://books.google.com/books/previewlib.js"></script>
+  <meta name="viewport"    content="width=device-width, initial-scale=1.0">
 
   <title>Stacks 'n Stacks</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-
-  <%= javascript_include_tag 'application' %>
-
-  <script type="text/javascript" src="http://books.google.com/books/previewlib.js"></script>
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
+
 </head>
 <body class="theme=invert">
 <nav class="mainmenu">
@@ -38,6 +39,7 @@
 
 
                 <h1 class="title">Stacks 'n Stacks</h1>
+                <br>
                 <h2 class="subtitle">A literary odyssey</h2>
 
                 <%= yield %>
@@ -51,6 +53,6 @@
 
 <!-- Load js libs only when the page is loaded. -->
 <!-- Custom template scripts -->
-<link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
+
 </body>
 </html>

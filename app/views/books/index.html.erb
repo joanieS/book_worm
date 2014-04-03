@@ -1,10 +1,10 @@
-
 <div id="top"> 
 <h1><!-- <input type="text" id="keyword" placeholder="Book Worm">&nbsp; -->
 <!-- <input type="image"  data-type="remote" id="search" src="../../assets/images/book_worm.jpeg" alt="search" WIDTH=50 HEIGHT=50 border=#ccc /> --></h1>
 <button type="button" class="btn btn-default btn-lg" data-type="remote" id="search">Read books now</button>
 
-<hr></div>  
+<hr>
+</div>  
 
 <%= render "embed", :isbn => @isbn %>
 <!-- display -->
@@ -15,14 +15,14 @@
 <!--         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
  -->        <!-- <h4 class="modal-title" id="myModalLabel">Read Me</h4> -->
 <!--       </div> -->
-      <div class="modal-body" style="height: 100%">
-        <div id="viewerCanvas" style="width: 100%; height: 700px"></div>
+      <div class="modal-body" style="height: 100% opacity: 1">
+        <div id="viewerCanvas" style="width: 100%; height: 700px; opacity: 1"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-type="remote" id="next">
+        <button type="button" class="btn bootstrap-btn-danger" data-type="remote" id="next">
             <span class="glyphicon glyphicon-ban-circle"></span>
         </button>
-        <button type="button" class="btn btn-primary" data-type="remote" id="next">
+        <button type="button" class="btn bootstrap-btn-primary" data-type="remote" id="next">
             <span class="glyphicon glyphicon-heart"></span>
         </button>
       </div>
