@@ -76,22 +76,27 @@ class Book < ActiveRecord::Base
 
       my_stuff = JSON.parse(response.body)
       option = my_stuff["items"].first
-      if option["volumeInfo"]["title"].match(title) && option["volumeInfo"]["authors"].include?(author)
-        author_names = option["volumeInfo"]["authors"]
-        isbn = option["volumeInfo"]["industryIdentifiers"].first["identifier"]
-        genre_names = option["volumeInfo"]["categories"]
-        release_date = option["volumeInfo"]["publishedDate"]
+      begin do
+        if option["volumeInfo"]["title"].match(title) && option["volumeInfo"]["authors"].include?(author)
+          author_names = option["volumeInfo"]["authors"]
+          isbn = option["volumeInfo"]["industryIdentifiers"].first["identifier"]
+          genre_names = option["volumeInfo"]["categories"]
+          release_date = option["volumeInfo"]["publishedDate"]
 
-        logger.info("Saving #{title}...")
+          logger.info("Saving #{title}...")
 
-        book.update(
-          release_date: release_date, 
-          author_names: author_names, 
-          genre_names: genre_names,
-          isbn: isbn
-        )
-      else
-        logger.info("We did not find a preview for #{title}.")
+          book.update(
+            release_date: release_date, 
+            author_names: author_names, 
+            genre_names: genre_names,
+            isbn: isbn
+          )
+        else
+          logger.info("We did not find a preview for #{title}.")
+        end
+      rescue
+        logger.info("We're missing info!")
+        return
       end
     end
   end
