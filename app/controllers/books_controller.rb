@@ -6,15 +6,15 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    flash[:notice] = ""
+    # session[:isbn] = ""
   end
 
   def preview
     @isbn = Book.all.sample.isbn
-    if flash[:notice] == @isbn.to_s 
+    if session[:isbn] == @isbn.to_s 
       redirect_to "preview_path"
     else 
-      flash[:isbn] = @isbn
+      session[:isbn] = @isbn
       @isbn
     end
   end
