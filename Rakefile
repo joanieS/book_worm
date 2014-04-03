@@ -5,6 +5,4 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-task :save_from_goodreads do
-    Book.save_books
-end
+
