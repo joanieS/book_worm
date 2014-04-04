@@ -20,32 +20,34 @@ class Book < ActiveRecord::Base
 
   def self.save_books
     urls = [
-      "https://www.goodreads.com/book/most_read",
-      "http://www.goodreads.com/list/show/3.Best_Science_Fiction_Fantasy_Books",
-      "http://www.goodreads.com/list/show/397.Best_Paranormal_Romance_Series",
+      "http://www.goodreads.com/list/show/6",
+      "http://www.goodreads.com/list/show/7",
       "http://www.goodreads.com/list/show/264.Books_That_Everyone_Should_Read_At_Least_Once",
-      "http://www.goodreads.com/list/show/2602.Best_Female_Lead_Characters",
+      "http://www.goodreads.com/list/show/36.Best_Poetry_Books",
       "http://www.goodreads.com/list/show/135.Best_Horror_Novels",
-      "http://www.goodreads.com/list/show/7205.Best_of_Little_Known_Authors",
-      "http://www.goodreads.com/list/show/50.The_Best_Epic_Fantasy",
-      "http://www.goodreads.com/list/show/8166.Books_You_Wish_More_People_Knew_About",
       "http://www.goodreads.com/list/show/15.Best_Historical_Fiction",
-      "http://www.goodreads.com/list/show/183.Tales_of_New_York_City",
-      "http://www.goodreads.com/list/show/824.Best_Non_fiction_War_Books",
-      "http://www.goodreads.com/list/show/338.Immigrant_Experience_Literature",
-      "http://www.goodreads.com/list/show/16.Best_Books_of_the_19th_Century",
-      "https://www.goodreads.com/list/show/6",
-      "https://www.goodreads.com/list/show/7",
-      "https://www.goodreads.com/list/show/30",
-      "http://www.goodreads.com/list/show/348.Thrillers",
       "http://www.goodreads.com/list/show/281.Best_Memoir_Biography_Autobiography",
       "http://www.goodreads.com/list/show/735.Must_Read_Non_Fiction",
-      "http://www.goodreads.com/list/show/10925.Funny_Women_Memoirs",
-      "http://www.goodreads.com/list/show/29013.Best_Biographies",
-      "http://www.goodreads.com/list/show/11.Best_Crime_Mystery_Books",
-      "http://www.goodreads.com/list/show/36.Best_Poetry_Books",
-      "http://www.goodreads.com/list/show/495.Best_of_William_Shakespeare",
-      "http://www.goodreads.com/list/show/453.Best_Philosophical_Literature"
+      "http://www.goodreads.com/list/show/7205.Best_of_Little_Known_Authors",
+      "http://www.goodreads.com/list/show/348.Thrillers",
+      "http://www.goodreads.com/list/show/11.Best_Crime_Mystery_Books"
+      # "http://www.goodreads.com/list/show/8166.Books_You_Wish_More_People_Knew_About",
+      # "http://www.goodreads.com/list/show/183.Tales_of_New_York_City",
+      # "http://www.goodreads.com/list/show/16.Best_Books_of_the_19th_Century",
+      # "http://www.goodreads.com/book/most_read",
+      # "http://www.goodreads.com/list/show/3.Best_Science_Fiction_Fantasy_Books",
+   
+      # "http://www.goodreads.com/list/show/30",
+      # "http://www.goodreads.com/list/show/2602.Best_Female_Lead_Characters",
+      # "http://www.goodreads.com/list/show/50.The_Best_Epic_Fantasy",
+      # "http://www.goodreads.com/list/show/824.Best_Non_fiction_War_Books",
+      # "http://www.goodreads.com/list/show/397.Best_Paranormal_Romance_Series",
+      # "http://www.goodreads.com/list/show/338.Immigrant_Experience_Literature",
+      # "http://www.goodreads.com/list/show/10925.Funny_Women_Memoirs",
+      # "http://www.goodreads.com/list/show/29013.Best_Biographies",
+      
+      # "http://www.goodreads.com/list/show/495.Best_of_William_Shakespeare",
+      # "http://www.goodreads.com/list/show/453.Best_Philosophical_Literature"
     ]
     urls.each do |url|
       puts "On #{url}"
@@ -53,6 +55,13 @@ class Book < ActiveRecord::Base
       results.each do |result|
         Book.find_book(result[0], result[1])
       end
+    end
+  end
+
+  def self.save_books_from(url)
+    results = Book.find_titles(url)
+    results.each do |result|
+      Book.find_book(result[0], result[1])
     end
   end
 
@@ -76,7 +85,7 @@ class Book < ActiveRecord::Base
         params: { 
           q: CGI::escape("#{title}"), 
           filter: "partial", 
-          key: ENV["GOOGLE_BOOKS_API_KEY"]
+          key: ENV["GBOOKS_BACKUP_KEY"]
         }
       )
 
@@ -94,10 +103,10 @@ class Book < ActiveRecord::Base
           puts "Saving #{title}..."
 
           book.update(
-            isbn: isbn
+            isbn: isbn,
             release_date: release_date, 
             author_names: author_names, 
-            genre_names: self.scrape_genres(isbn),
+            genre_names: self.scrape_genres(isbn)
           )
         else
           puts "We did not find a preview for #{title}."
