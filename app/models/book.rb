@@ -26,10 +26,10 @@ class Book < ActiveRecord::Base
       # "http://www.goodreads.com/list/show/36.Best_Poetry_Books",
       # "http://www.goodreads.com/list/show/135.Best_Horror_Novels",
       # "http://www.goodreads.com/list/show/15.Best_Historical_Fiction", #problem
-      "http://www.goodreads.com/list/show/281.Best_Memoir_Biography_Autobiography",
-      "http://www.goodreads.com/list/show/735.Must_Read_Non_Fiction",
-      "http://www.goodreads.com/list/show/7205.Best_of_Little_Known_Authors",
-      "http://www.goodreads.com/list/show/348.Thrillers",
+      # "http://www.goodreads.com/list/show/281.Best_Memoir_Biography_Autobiography",
+      # "http://www.goodreads.com/list/show/735.Must_Read_Non_Fiction",
+      # "http://www.goodreads.com/list/show/7205.Best_of_Little_Known_Authors",
+      # "http://www.goodreads.com/list/show/348.Thrillers",
       "http://www.goodreads.com/list/show/11.Best_Crime_Mystery_Books"
       # "http://www.goodreads.com/list/show/8166.Books_You_Wish_More_People_Knew_About",
       # "http://www.goodreads.com/list/show/183.Tales_of_New_York_City",
