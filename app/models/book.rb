@@ -67,10 +67,17 @@ class Book < ActiveRecord::Base
 
   def self.find_book(title, author)  
     book = Book.find_or_initialize_by(title: title)
-    unless book.persisted?
+    if book.persisted?
+      puts "Already have #{title} in database."
+      return
+    else
       request = Typhoeus::Request.new(
-      "https://www.googleapis.com/books/v1/volumes",
-      params: { q: CGI::escape("#{title}"), filter: "partial", key: ENV["GOOGLE_BOOKS_API_KEY"]},
+        "https://www.googleapis.com/books/v1/volumes",
+        params: { 
+          q: CGI::escape("#{title}"), 
+          filter: "partial", 
+          key: ENV["GOOGLE_BOOKS_API_KEY"]
+        }
       )
 
       response = request.run
@@ -81,16 +88,16 @@ class Book < ActiveRecord::Base
         if option["volumeInfo"]["title"].match(title) && option["volumeInfo"]["authors"].include?(author)
           author_names = option["volumeInfo"]["authors"]
           isbn = option["volumeInfo"]["industryIdentifiers"].first["identifier"]
-          genre_names = option["volumeInfo"]["categories"]
+          # genre_names = option["volumeInfo"]["categories"]
           release_date = option["volumeInfo"]["publishedDate"]
 
           puts "Saving #{title}..."
 
           book.update(
+            isbn: isbn
             release_date: release_date, 
             author_names: author_names, 
-            genre_names: genre_names,
-            isbn: isbn
+            genre_names: self.scrape_genres(isbn),
           )
         else
           puts "We did not find a preview for #{title}."
@@ -99,6 +106,15 @@ class Book < ActiveRecord::Base
         puts "We're missing info!"
         return
       end
+    end
+  end
+
+  def self.scrape_genres(isbn)
+    url = "https://www.goodreads.com/book/isbn/#{isbn}"
+    page = Nokogiri::HTML(open(url))
+    results = page.css('div.bigBoxBody div.elementList div.left a.actionLinkLite')
+    results.map do |result|
+      result.text
     end
   end
 
