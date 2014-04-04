@@ -31,7 +31,6 @@ class Book < ActiveRecord::Base
       # "http://www.goodreads.com/list/show/7205.Best_of_Little_Known_Authors",
       # "http://www.goodreads.com/list/show/348.Thrillers",
       # "http://www.goodreads.com/list/show/11.Best_Crime_Mystery_Books"
-
       # "http://www.goodreads.com/list/show/8166.Books_You_Wish_More_People_Knew_About",
       # "http://www.goodreads.com/list/show/183.Tales_of_New_York_City",
       # "http://www.goodreads.com/list/show/16.Best_Books_of_the_19th_Century",
