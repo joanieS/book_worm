@@ -122,9 +122,10 @@ class Book < ActiveRecord::Base
     url = "https://www.goodreads.com/book/isbn/#{isbn}"
     page = Nokogiri::HTML(open(url))
     results = page.css('div.bigBoxBody div.elementList div.left a.actionLinkLite')
-    results.map do |result|
+    genre_names = results.map do |result|
       result.text
     end
+    genre_names.uniq
   end
 
 end
