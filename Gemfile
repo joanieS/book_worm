@@ -67,3 +67,4 @@ gem "airbrake"
 
 gem "googlebooks"
 gem "nokogiri"
+gem "predictionio"

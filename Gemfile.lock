@@ -109,6 +109,7 @@ GEM
       mini_portile (~> 0.5.0)
     pg (0.17.1)
     polyglot (0.3.4)
+    predictionio (0.7.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -227,6 +228,7 @@ DEPENDENCIES
   jquery-rails
   nokogiri
   pg
+  predictionio
   pry
   rails (= 4.1.0.rc2)
   rails_12factor
