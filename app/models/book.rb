@@ -42,7 +42,7 @@ class Book < ActiveRecord::Base
       # "http://www.goodreads.com/list/show/824.Best_Non_fiction_War_Books",
       # "http://www.goodreads.com/list/show/397.Best_Paranormal_Romance_Series",
       # "http://www.goodreads.com/list/show/338.Immigrant_Experience_Literature",
-      "http://www.goodreads.com/list/show/10925.Funny_Women_Memoirs",
+      # "http://www.goodreads.com/list/show/10925.Funny_Women_Memoirs",
       "http://www.goodreads.com/list/show/29013.Best_Biographies",
       "http://www.goodreads.com/list/show/495.Best_of_William_Shakespeare",
       "http://www.goodreads.com/list/show/453.Best_Philosophical_Literature"
@@ -83,7 +83,7 @@ class Book < ActiveRecord::Base
         params: { 
           q: CGI::escape("#{title}"), 
           filter: "partial", 
-          key: ENV["GBOOKS_BACKUP_KEY2"]
+          key: ENV["GOOGLE_BOOKS_API_KEY"]
         }
       )
 
