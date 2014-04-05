@@ -22,10 +22,10 @@ class Book < ActiveRecord::Base
     urls = [
       # "http://www.goodreads.com/list/show/6",
       # "http://www.goodreads.com/list/show/7",
-      # "http://www.goodreads.com/list/show/264.Books_That_Everyone_Should_Read_At_Least_Once", #problem
+      "http://www.goodreads.com/list/show/264.Books_That_Everyone_Should_Read_At_Least_Once",
       # "http://www.goodreads.com/list/show/36.Best_Poetry_Books",
       # "http://www.goodreads.com/list/show/135.Best_Horror_Novels",
-      # "http://www.goodreads.com/list/show/15.Best_Historical_Fiction", #problem
+      "http://www.goodreads.com/list/show/15.Best_Historical_Fiction"
       # "http://www.goodreads.com/list/show/281.Best_Memoir_Biography_Autobiography",
       # "http://www.goodreads.com/list/show/735.Must_Read_Non_Fiction",
       # "http://www.goodreads.com/list/show/7205.Best_of_Little_Known_Authors",
@@ -43,9 +43,9 @@ class Book < ActiveRecord::Base
       # "http://www.goodreads.com/list/show/397.Best_Paranormal_Romance_Series",
       # "http://www.goodreads.com/list/show/338.Immigrant_Experience_Literature",
       # "http://www.goodreads.com/list/show/10925.Funny_Women_Memoirs",
-      "http://www.goodreads.com/list/show/29013.Best_Biographies",
-      "http://www.goodreads.com/list/show/495.Best_of_William_Shakespeare",
-      "http://www.goodreads.com/list/show/453.Best_Philosophical_Literature"
+      # "http://www.goodreads.com/list/show/29013.Best_Biographies",
+      # "http://www.goodreads.com/list/show/495.Best_of_William_Shakespeare",
+      # "http://www.goodreads.com/list/show/453.Best_Philosophical_Literature"
     ]
     urls.each do |url|
       puts "On #{url}"
