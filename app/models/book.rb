@@ -18,6 +18,18 @@ class Book < ActiveRecord::Base
     end
   end
 
+  def recommend(liked_book)
+    options = []
+    Book.all.each do |book|
+      if book.genres.count >= 3 && !book.genres.empty?
+        options << book if book.genres.all? {|genre| liked_book.genres.include?(genre)}
+      end
+    end
+    options.shift
+    options
+  end
+
+
   def self.save_books
     urls = [
       # "http://www.goodreads.com/list/show/6",
