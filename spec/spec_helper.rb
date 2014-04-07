@@ -16,7 +16,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+
 VCR.configure do |c|
+  puts File.expand_path('spec/fixtures/vcr_cassettes')
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.debug_logger = File.open('spec/fixtures/debug.log', 'w')

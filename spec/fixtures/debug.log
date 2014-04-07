@@ -1,0 +1,6 @@
+[webmock] Handling request: [get http://www.goodreads.com/list/show/495.Best_of_William_Shakespeare] (disabled: false)
+[webmock] Identified request type (externally_stubbed) for [get http://www.goodreads.com/list/show/495.Best_of_William_Shakespeare]
+[webmock] Handling request: [get https://www.googleapis.com/books/v1/volumes?filter=partial&key=AIzaSyCb4oe6uvfhskLO5HGQrS7xdV0nsWnPwQs&q=Hamlet] (disabled: false)
+[webmock] Identified request type (externally_stubbed) for [get https://www.googleapis.com/books/v1/volumes?filter=partial&key=AIzaSyCb4oe6uvfhskLO5HGQrS7xdV0nsWnPwQs&q=Hamlet]
+[webmock] Handling request: [get https://www.goodreads.com/book/isbn/9788492683840] (disabled: false)
+[webmock] Identified request type (externally_stubbed) for [get https://www.goodreads.com/book/isbn/9788492683840]
