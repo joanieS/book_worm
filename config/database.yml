@@ -12,6 +12,7 @@ default: &default
 development:
   <<: *default
   database: stacks_development
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,6 +20,7 @@ development:
 test:
   <<: *default
   database: stacks_test
+  host: localhost
 
 # Do not keep production credentials in the repository,
 # instead read the configuration from the environment.

@@ -20,7 +20,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -37,6 +36,11 @@ gem 'spring',        group: :development
 gem 'figaro', git: 'https://github.com/laserlemon/figaro.git'
 gem 'typhoeus'
 
+group :development do
+  gem 'rails-erd'
+  gem 'spring'
+end
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
@@ -49,6 +53,7 @@ group :test, :development do
   gem "database_cleaner"
   gem "sqlite3"
   gem "pry"
+  gem 'seed_dump'
 end
 
 group :test do
