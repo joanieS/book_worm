@@ -22,6 +22,19 @@ class BooksController < ApplicationController
     @book.save
   end
 
+  def like
+    @book = Book.find(params[:isbn])
+    @book.ups = @book.ups+1
+    @book.save
+    @genre = @book.genre
+  end
+
+  def dislike
+    @book = Book.find(params[:isbn])
+    @book.downs = @book.downs+1
+    @book.save
+  end
+
   private
     def book_params
       params.require(:book).permit(:title, :author, :isbn, :release_date, :excerpt)

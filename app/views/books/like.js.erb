@@ -1,8 +1,7 @@
 var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
 var number = <%= @isbn %>;
 
-console.log("ISBN is"+number);
-<%=binding.pry%>
+console.log("Reader likes"+number);
 viewer.load("ISBN:<%= @isbn %>", alertNotFound);
 
 function alertNotFound() {
