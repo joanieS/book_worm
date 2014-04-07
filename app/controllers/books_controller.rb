@@ -13,20 +13,13 @@ class BooksController < ApplicationController
     end
   end
 
-  def new
-    @book = Book.new
-  end
-
-  def create
-    @book = Book.new(book_params)
-    @book.save
-  end
-
   def like
+    Book.liked_books << session[:isbn]
     @book = Book.find(params[:isbn])
     @book.ups = @book.ups+1
     @book.save
-    @genre = @book.genre
+    # @genre = @book.genre
+    flash[:notice] = "Liked!"
   end
 
   def dislike
@@ -34,9 +27,4 @@ class BooksController < ApplicationController
     @book.downs = @book.downs+1
     @book.save
   end
-
-  private
-    def book_params
-      params.require(:book).permit(:title, :author, :isbn, :release_date, :excerpt)
-    end
 end
