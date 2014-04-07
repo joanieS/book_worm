@@ -17,21 +17,19 @@
 
         $("button#search").on("click", function(e){
         $.getScript("<%= preview_path %>", function(e){
-            $("#myModal").modal('toggle', function(){
-            });
+            $("#myModal").modal('toggle', function(){});
         });
         $("button#next").on("click", function(e){
-            $.getScript("<%= preview_path %>", function(e){
-              });
-          });
+            $.getScript("<%= preview_path %>", function(e){});
+        });
         $("button#like").on("click", function(e){
             $.getScript("<%= like_path %>"); 
             $.getScript("<%= preview_path %>", function(e) {});
-          });
+        });
         $("button#dislike").on("click", function(e){
-            $.getScript("<%= preview_path %>", function(e){
-              });
-          });
+            $.getScript("<%= dislike_path %>");
+            $.getScript("<%= preview_path %>", function(e) {});
+        });
       });
     });
 </script>

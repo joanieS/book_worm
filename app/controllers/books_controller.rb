@@ -15,7 +15,16 @@ class BooksController < ApplicationController
 
   def like
     Book.liked_books << session[:isbn]
+    @book = Book.find(params[:isbn])
+    @book.ups = @book.ups+1
+    @book.save
+    # @genre = @book.genre
     flash[:notice] = "Liked!"
   end
 
+  def dislike
+    @book = Book.find(params[:isbn])
+    @book.downs = @book.downs+1
+    @book.save
+  end
 end
