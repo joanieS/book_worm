@@ -13,17 +13,9 @@ class BooksController < ApplicationController
     end
   end
 
-  def new
-    @book = Book.new
+  def like
+    Book.liked_books << session[:isbn]
+    flash[:notice] = "Liked!"
   end
 
-  def create
-    @book = Book.new(book_params)
-    @book.save
-  end
-
-  private
-    def book_params
-      params.require(:book).permit(:title, :author, :isbn, :release_date, :excerpt)
-    end
 end

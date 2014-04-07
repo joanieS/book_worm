@@ -13,7 +13,7 @@
         //   }
         // });
       <!-- //end function to allow "enter" to send form -->
-
+        var isbn = <%= @isbn %>
 
         $("button#search").on("click", function(e){
         $.getScript("<%= preview_path %>", function(e){
@@ -25,8 +25,8 @@
               });
           });
         $("button#like").on("click", function(e){
-            $.getScript("<%= preview_path %>", function(e){
-              });
+            $.getScript("<%= like_path %>"); 
+            $.getScript("<%= preview_path %>", function(e) {});
           });
         $("button#dislike").on("click", function(e){
             $.getScript("<%= preview_path %>", function(e){
