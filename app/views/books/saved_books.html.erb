@@ -1,7 +1,8 @@
 <h1>Your Books</h1>
 
-<% @books.each do |book| %>
-  <p id="title"><%= book.title %> (<%= book.release_year %>)</p>
+<% @isbns.each do |isbn| %>
+  <%= book = Book.find_by(isbn: isbn) %>
+  <p id="title"><%= book.title %> (<%= book.release_date %>)</p>
   <p id="author"><%= book.author %></p>
   <br>
 <% end %>

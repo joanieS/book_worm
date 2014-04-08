@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   end
 
   def saved_books
-    @books = Book.liked_books
+    @isbns = Book.liked_books
   end
 
 end

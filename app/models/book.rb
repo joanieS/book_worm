@@ -35,6 +35,10 @@ class Book < ActiveRecord::Base
     LIKED_BOOKS
   end
 
+  def author
+    self.authors[0]
+  end
+
   def self.grab_covers
     Book.all.each do |book|
       response = request(book.title).run
