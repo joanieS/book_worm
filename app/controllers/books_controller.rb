@@ -29,4 +29,8 @@ class BooksController < ApplicationController
     flash[:notice] = "Disliked!"
   end
 
+  def saved_books
+    @books = Book.liked_books
+  end
+
 end

@@ -1,0 +1,7 @@
+<h1>Your Books</h1>
+
+<% @books.each do |book| %>
+  <p id="title"><%= book.title %> (<%= book.release_year %>)</p>
+  <p id="author"><%= book.author %></p>
+  <br>
+<% end %>

@@ -35,6 +35,15 @@ class Book < ActiveRecord::Base
     LIKED_BOOKS
   end
 
+  def self.update_records
+    Book.all.each do |book|
+      response = request(book.title).run
+      stuff = JSON.parse(response.body)
+      option = stuff["items"].first
+      book.update(cover_link: option["volumeInfo"]["imageLinks"]["thumbnail"])
+    end
+  end
+
   def self.save_books
     urls = [
       # "http://www.goodreads.com/list/show/6",
@@ -89,23 +98,24 @@ class Book < ActiveRecord::Base
     end
   end
 
+  def request(title)
+    request = Typhoeus::Request.new(
+    "https://www.googleapis.com/books/v1/volumes",
+    params: { 
+      q: CGI::escape("#{title}"), 
+      filter: "partial", 
+      key: ENV["GBOOKS_BACKUP_KEY"]
+    })
+  end
+
   def self.find_book(title, author)  
     book = Book.find_or_initialize_by(title: title)
     if book.persisted?
       puts "Already have #{title} in database."
       return
     else
-      request = Typhoeus::Request.new(
-        "https://www.googleapis.com/books/v1/volumes",
-        params: { 
-          q: CGI::escape("#{title}"), 
-          filter: "partial", 
-          key: ENV["GOOGLE_BOOKS_API_KEY"]
-        }
-      )
-
-      response = request.run
-
+      response = request(title).run
+    
       begin
       my_stuff = JSON.parse(response.body)
       option = my_stuff["items"].first
