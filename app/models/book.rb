@@ -98,7 +98,7 @@ class Book < ActiveRecord::Base
     end
   end
 
-  def request(title)
+  def self.request(title)
     request = Typhoeus::Request.new(
     "https://www.googleapis.com/books/v1/volumes",
     params: { 
