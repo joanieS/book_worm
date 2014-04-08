@@ -35,12 +35,13 @@ class Book < ActiveRecord::Base
     LIKED_BOOKS
   end
 
-  def self.update_records
+  def self.grab_covers
     Book.all.each do |book|
       response = request(book.title).run
       stuff = JSON.parse(response.body)
       option = stuff["items"].first
       book.update(cover_link: option["volumeInfo"]["imageLinks"]["thumbnail"])
+      puts "Grabbed cover for #{book.title}."
     end
   end
 

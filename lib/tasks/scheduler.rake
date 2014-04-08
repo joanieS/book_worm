@@ -5,7 +5,7 @@ end
 
 desc "Grabs book covers from Google Books"
 task :grab_covers => :environment do
-  Book.update_records
+  Book.grab_covers
 end
 
 # task :save_from_goodreads_list, :url => :environment do |t, url|
