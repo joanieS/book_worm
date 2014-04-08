@@ -105,7 +105,7 @@ class Book < ActiveRecord::Base
     params: { 
       q: CGI::escape("#{title}"), 
       filter: "partial", 
-      key: ENV["GBOOKS_BACKUP_KEY"]
+      key: ENV["GOOGLE_BOOKS_API_KEY"]
     })
   end
 
