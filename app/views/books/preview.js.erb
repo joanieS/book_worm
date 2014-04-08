@@ -2,7 +2,6 @@ var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanva
 var number = <%= @isbn %>;
 
 console.log("ISBN is"+number);
-<%=binding.pry%>
 viewer.load("ISBN:<%= @isbn %>", alertNotFound);
 
 function alertNotFound() {

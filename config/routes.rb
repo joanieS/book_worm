@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get '/preview' => 'books#preview', as: 'preview'
   get '/like' => 'books#like', as: 'like'
+  get '/dislike' => 'books#dislike', as: 'dislike'
   root to: 'books#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
