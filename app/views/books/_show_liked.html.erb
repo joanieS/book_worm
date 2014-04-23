@@ -1,0 +1,8 @@
+<% unless isbns.nil? %>
+  <% isbns.each do |isbn| %>
+    <%= book = Book.find_by(isbn: isbn) %>
+    <p id="title"><%= book.title %> (<%= book.release_date %>)</p>
+    <p id="author"><%= book.author %></p>
+    <br>
+  <% end %>
+<% end %>

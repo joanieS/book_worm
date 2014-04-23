@@ -28,6 +28,27 @@ body {
   padding-bottom: 30px;
 }
 
+#about {
+  p {
+    color: white;
+    font-size: 16px;
+  }
+
+  h3 {
+    color: white;
+  }
+
+  
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+#liked {
+  
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
