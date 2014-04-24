@@ -6,6 +6,10 @@ class Book < ActiveRecord::Base
   has_many :book_genres
   has_many :genres, :through => :book_genres
 
+  def release_year
+    self.release_date.split("-").first
+  end
+
   def author_names=(author_names)
     author_names.each do |author_name|
       self.book_authors.build(:author => Author.find_or_create_by(name: author_name))

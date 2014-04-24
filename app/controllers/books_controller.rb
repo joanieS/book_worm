@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  before_action :set_user, only: [:like, :dislike]
+  before_action :set_book, only: [:like, :dislike]
+
 
   def index
   end
@@ -14,7 +17,7 @@ class BooksController < ApplicationController
   end
 
   def like
-    add_to_liked
+    UserBook.find_or_create_by(user: @user, book: @book, liked: true)
     # @book = Book.find_by(isbn: session[:isbn])
     # @book.ups += 1
     # @book.save
@@ -28,14 +31,24 @@ class BooksController < ApplicationController
   end
 
   def dislike
-    @book = Book.find_by(isbn: session[:isbn])
+    UserBook.find_or_create_by(user: @user, book: @book, liked: false)
     # @book.downs += 1
     # @book.save
     flash[:notice] = "Disliked!"
+    render nothing: true
   end
 
   def saved_books
     @isbns = Book.liked_books
   end
+
+  private
+    def set_user
+      @user = current_user
+    end
+
+    def set_book
+      @book = Book.find_by(isbn: session[:isbn])
+    end
 
 end

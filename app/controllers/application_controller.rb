@@ -5,8 +5,4 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def add_to_liked
-    session[:liked_books] ||= []
-    (session[:liked_books] << session[:isbn]) unless session[:liked_books].include?(session[:isbn])
-  end
 end
