@@ -51,44 +51,4 @@
   </div>
 </section>
 
-<section class="section" id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">   
-
-
-          <h1 class="title">About Us</h1>
-          <br>
-          <h3>Our Mission</h3>
-          <p>Finding books online should be as natural as wandering through a bookstore. There was no service out there that combines curated book lists with book previews. So we made Stacks 'n Stacks, a site that quickly lets readers browse quality books.</p>
-
-          <h3>Our Tech</h3>
-          <p> We leverage the Goodreads API to collect lists of user-curated books, and then use the Google Books Viewer API to present previews of each book to users. Stacks 'n Stacks is a Ruby on Rails App that uses jQuery to provide a seamless user experience and AJAX to make asynchronous calls to our database of books.</p>
-
-          <h3>The Librarians</h3>
-          <p>Stacks 'n Stacks was created with love at the <%= link_to "Flatiron School", "http://flatironschool.com" %> by:</p>
-
-          <div class="bio">
-            <%= image_tag('https://avatars0.githubusercontent.com/u/5783513?u=a04b8a6909b5a7afad4aaf8d9ff336936fd27d9d&s=140') %>
-            <p>Alex Wilkinson</p>
-              <%= link_to "Github", "http://github.com/alexwilkinson" %> |
-              <%= link_to "Blog", "http://alexwilkinson.me/blog" %>
-          </div>
-          <br>
-          <div class="bio">
-            <%= image_tag('https://avatars0.githubusercontent.com/u/6420711?u=ca8e9f43b5e90986560978e50656f6bf5b72ab2a&s=140') %>
-            <p>Joan Soskin</p>    
-              <%= link_to "Github", "http://github.com/joanieS" %> |
-              <%= link_to "Blog", "http://joansoskin.wordpress.com/" %>
-          </div>
-          <br>
-          <div class="bio">
-            <%= image_tag('https://avatars0.githubusercontent.com/u/6493794?u=ff7fd3e0621e03127ef0e8b29275ec0d7a019e3f&s=140') %>
-            <p>Prashant Mukhopadhyay</p>
-              <%= link_to "Github", "http://github.com/prashmukho" %> |
-              <%= link_to "Blog", "http://scriptfiend.tumblr.com" %>
-          </div>
-      </div>
-    </div>
-  </div>
-</section>
+<%= render 'layouts/about' %>

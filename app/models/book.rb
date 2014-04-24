@@ -6,8 +6,6 @@ class Book < ActiveRecord::Base
   has_many :book_genres
   has_many :genres, :through => :book_genres
 
-  LIKED_BOOKS = []
-
   def author_names=(author_names)
     author_names.each do |author_name|
       self.book_authors.build(:author => Author.find_or_create_by(name: author_name))
@@ -29,10 +27,6 @@ class Book < ActiveRecord::Base
     end
     options.shift
     options
-  end
-
-  def self.liked_books
-    LIKED_BOOKS
   end
 
   def author

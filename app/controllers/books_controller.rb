@@ -14,20 +14,17 @@ class BooksController < ApplicationController
   end
 
   def like
-    binding.pry
-    session[:liked_books] ||= []
-    (session[:liked_books] << session[:isbn]) unless session[:liked_books].include?(session[:isbn])
+    add_to_liked
     # @book = Book.find_by(isbn: session[:isbn])
     # @book.ups += 1
     # @book.save
     # @genres = @book.genres
     flash[:notice] = "Liked!"
-    binding.pry
+    render nothing: true
   end
 
   def liked_books
-    @liked_books = session[:liked_books]
-    binding.pry
+    @liked_books = session[:liked_books] 
   end
 
   def dislike
