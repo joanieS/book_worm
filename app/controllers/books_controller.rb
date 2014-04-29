@@ -17,12 +17,7 @@ class BooksController < ApplicationController
   end
 
   def like
-    UserBook.find_or_create_by(user: @user, book: @book, liked: true)
-    # @book = Book.find_by(isbn: session[:isbn])
-    # @book.ups += 1
-    # @book.save
-    # @genres = @book.genres
-    flash[:notice] = "Liked!"
+    UserBook.find_or_create_by(user: @user, book: @book, liked: true) unless @user == false
     render nothing: true
   end
 
@@ -31,10 +26,7 @@ class BooksController < ApplicationController
   end
 
   def dislike
-    UserBook.find_or_create_by(user: @user, book: @book, liked: false)
-    # @book.downs += 1
-    # @book.save
-    flash[:notice] = "Disliked!"
+    UserBook.find_or_create_by(user: @user, book: @book, liked: false) unless @user == false
     render nothing: true
   end
 

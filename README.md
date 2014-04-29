@@ -1,56 +1,47 @@
-# Book Worm Project
+# Stacks 'n Stacks
+
+[![Code Climate](https://codeclimate.com/github/joanieS/book_worm.png)](https://codeclimate.com/github/joanieS/book_worm)
 
 ## Description
 
-Add a short description of your app.
+Stacks 'n Stacks is a Ruby on Rails app that quickly lets readers browse quality books. We leverage the Goodreads API to collect lists of user-curated books, and then use the Google Books Viewer API to present previews of each book to users.
 
 ## Screenshots
 
-Add some spiffy screenshots of your app here.
+[![Home Page](http://stacks-n-stacks.herokuapp.com/assets/home.png)](http://stacks-n-stacks.herokuapp.com)
+
+[![Reading](http://stacks-n-stacks.herokuapp.com/assets/reading.png)](http://stacks-n-stacks.herokuapp.com)
 
 ## Background
 
-Why did you want to make this app? What was your development process
-like?
+We all felt that finding books online should be as natural as wandering through a bookstore. There was no service out there that combined curated book lists with book previews, so we decided to make one! We also felt that it would be important to maintain a seamless reading experience for users, so we challenged ourselves by integrating a Javascript-powered one-page Bootstrap theme ([Magister](http://www.bootstrapzero.com/bootstrap-template/magister)). We use jQuery to change the sections of our site, and AJAX to make asynchronous calls to our server for views and data.
 
 ## Features
 
-Bullet point some of the key features of your app here.
-
-## Usage
-
-How do users use your app?
-
-## Development/Contribution
-
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+- Browse books with our integrated Google Books viewer
+- Register for the site to save books that you liked
 
 ## Future
 
 Currently working on:
 
-1. Scraping data on page load :)
-2. Caching data for a session :)
-3. Implementing modal "next" functionality :)
-4. :(
+1. Enhancing Saved Books page
+2. Providing basic recommendations based on books users like
 
-Tomorrow:
-1. Integrate Google API function to check for preview (squash bug)
-2. Add method to ensure no duplicate books (use flash?)
-3. Expand data set
-4. Consider "plus" and "minus" functionality
+## Authors
 
-Future:
-1. Worry about search
-2. Think about database
-3. Maybe have some users
-4. Make it pretty
+### Alex Wilkinson
+ - [Blog](http://alexwilkinson.me/blog)
+ - [Github](http://github.com/alexwilkinson)
 
-## Author
+### Joan Soskin
+ - [Blog](http://joansoskin.wordpress.com)
+ - [Github](http://github.com/joanieS)
 
-Link to your blog, twitter, etc!
+### Prashant Mukhopadhyay
+ - [Blog](http://scriptfiend.tumblr.com)
+ - [Github](http://github.com/prashmukho)
 
 ## License
 
-My Spiffy App is MIT Licensed. See LICENSE for details.
+My Stacks 'n Stacks is MIT Licensed. See LICENSE for details.

@@ -5,16 +5,14 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:email], params[:password], params[:remember_me])
     if user
-      redirect_back_or_to root_url, :notice => "Logged in!"
+      redirect_to root_url
     else
       flash.now.alert = "Email or password was invalid"
-      render :new
     end
   end
 
   def destroy
     logout
     render js: "window.location='#{root_path}'"
-    # redirect_to root_url, :notice => "Logged out!"
   end
 end
