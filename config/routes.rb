@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/liked_books' => 'books#liked_books', as: 'liked_books'
   get '/dislike' => 'books#dislike', as: 'dislike'
   get '/saved-books' => 'books#saved_books', as: 'saved_books'
-  get '/about' => 'static#about', as: 'about'
+  
   root to: 'books#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
