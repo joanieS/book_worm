@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_url, :notice => "Logged out!"
+    render js: "window.location='#{root_path}'"
+    # redirect_to root_url, :notice => "Logged out!"
   end
 end

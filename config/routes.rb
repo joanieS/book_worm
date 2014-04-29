@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/create'
-
-  get 'password_resets/edit'
-
-  get 'password_resets/update'
+  get '/login' => 'sessions#new', as: :login
+  get '/logout' => 'sessions#destroy', as: :logout
 
   resources :users
   resources :sessions
   resources :password_resets
-
-  get '/login' => 'sessions#new', as: :login
-  get '/logout' => 'sessions#destroy', as: :logout
 
   get '/preview' => 'books#preview', as: 'preview'
   get '/like' => 'books#like', as: 'like'

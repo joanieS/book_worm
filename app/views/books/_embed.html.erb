@@ -1,18 +1,6 @@
 <script type="text/javascript">
   google.load("books", "0");
     $(document).ready(function initialize(){
-
-        <!-- //function to set cursor to input -->
-        // $("input#keyword").focus();
-        // $("input#keyword").get(0).setSelectionRange;
-      <!-- //end function to set cursor to input -->
-      <!-- //function to allow "enter" to send form -->
-        // $('#keyword').keyup(function (e) {
-        //   if (e.keyCode == 13) {
-        //     $('input#search').click();
-        //   }
-        // });
-      <!-- //end function to allow "enter" to send form -->
         var isbn = <%= @isbn %>
 
         $("button#search").on("click", function(e){
