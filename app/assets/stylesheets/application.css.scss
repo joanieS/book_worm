@@ -23,6 +23,10 @@
 @import "scaffolds";
 
 /* Some Style from the Bootstrap Default Theme */
+.alert {
+  margin: 5px;
+}
+
 body {
   padding-top: 70px;
   padding-bottom: 30px;

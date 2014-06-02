@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:email], params[:password], params[:remember_me])
     if user
+      flash[:success] = "You have been logged in."
       redirect_to root_url
     else
-      flash.now.alert = "Email or password was invalid"
+      flash[:alert] = "Email or password was invalid"
     end
   end
 
