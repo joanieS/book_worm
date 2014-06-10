@@ -1,9 +1,9 @@
 <h1 class="title">Log In</h1>
 <br>
-<%= form_tag sessions_path do %>
+<%= form_tag sessions_path, remote: true do %>
   <div class="field">
     <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+    <%= text_field_tag :email, params[:email], autofocus: true %>
   </div>
   <div class="field">
     <%= label_tag :password %>
