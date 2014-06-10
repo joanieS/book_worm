@@ -5,12 +5,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    respond_to do |f| 
+    respond_to do |f|
       if @user.save
         flash[:success] = "You have been registered."
         f.js { render js: "window.location='#{root_url}'" }
       else
-        f.js { render js: 'register_failure', msg: print_errors_for(@user) }
+        # flash[:alert] = print_errors_for(@user)
+        # f.js { render js: "window.location='#{root_url}'" }
+        @msg = print_errors_for(@user)
+        f.js { render 'register_failure', locals: {msg: @msg} }
       end
     end
   end
