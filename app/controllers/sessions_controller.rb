@@ -3,13 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = login(params[:email], params[:password], params[:remember_me])
+    user = login(params[:email], params[:password])
     respond_to do |f|
       if user
         flash[:success] = "You have been logged in."
         f.js { render js: "window.location='#{root_url}'" }
       else
-        flash[:alert] = "Email or password was invalid"
+        @msg = "Email or password was invalid"
+        f.js { render 'layouts/form_failure', locals: {msg: @msg} }
       end
     end
   end

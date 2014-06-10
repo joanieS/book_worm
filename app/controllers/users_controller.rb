@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         # flash[:alert] = print_errors_for(@user)
         # f.js { render js: "window.location='#{root_url}'" }
         @msg = print_errors_for(@user)
-        f.js { render 'register_failure', locals: {msg: @msg} }
+        f.js { render 'layouts/form_failure', locals: {msg: @msg} }
       end
     end
   end
