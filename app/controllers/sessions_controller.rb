@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = login(params[:email], params[:password])
+    binding.pry
     respond_to do |f|
       if user
         flash[:success] = "You have been logged in."

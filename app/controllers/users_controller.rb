@@ -7,11 +7,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |f|
       if @user.save
+        auto_login(@user)
         flash[:success] = "You have been registered."
         f.js { render js: "window.location='#{root_url}'" }
       else
-        # flash[:alert] = print_errors_for(@user)
-        # f.js { render js: "window.location='#{root_url}'" }
         @msg = print_errors_for(@user)
         f.js { render 'layouts/form_failure', locals: {msg: @msg} }
       end
@@ -19,6 +18,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_email
+    params[:user][:email]
+  end
+
+  def user_password
+    params[:user][:email]
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
