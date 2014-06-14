@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     @isbn = Book.all.sample.isbn
     if session[:isbn] == @isbn
       redirect_to "preview_path"
-    else 
+    else
       session[:isbn] = @isbn
       @isbn
     end
@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   end
 
   def liked_books
-    @liked_books = session[:liked_books] 
+    @liked_books = session[:liked_books]
   end
 
   def dislike

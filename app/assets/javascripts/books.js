@@ -8,7 +8,7 @@ $(document).ready(function() {
       $.getScript("/preview", function(e){});
   });
   $("button#like").on("click", function(e){
-      $.getScript("/like"); 
+      $.getScript("/like");
       $.getScript("/preview", function(e) {});
   });
   $("button#dislike").on("click", function(e){
