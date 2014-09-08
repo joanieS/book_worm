@@ -65,8 +65,8 @@ module Saveable
 
     book_object.update(
       isbn: isbn,
-      release_date: release_date, 
-      author_names: author_names, 
+      release_date: release_date,
+      author_names: author_names,
       genre_names: scrape_genres(isbn),
       cover_link: cover_link
     )
@@ -81,25 +81,24 @@ module Saveable
     results = page.css('div.leftContainer table.tableList tr td a span')
     count = results.count/2
     (0..count-1).map do |i|
-      [results[i*2].text.split(" (").first, results[i*2 +1].text]
+      [results[i*2].text.split(" (").first, results[i*2 + 1].text]
     end
   end
 
-  def find_book(title, author)  
+  def find_book(title, author)
     book_object = Book.find_or_initialize_by(title: title)
     if book_object.persisted?
       puts "Already have #{title} in database."
     else
       response = request(title).run
-    
-     begin
-      response_body = JSON.parse(response.body)
-      option = response_body["items"].first
-        if preview_available_for(option, title, author)
-          save_info_for(option, title, book_object)
-        else
-          puts "We did not find a preview for #{title}."
-        end
+      begin
+        response_body = JSON.parse(response.body)
+        option = response_body["items"].first
+          if preview_available_for(option, title, author)
+            save_info_for(option, title, book_object)
+          else
+            puts "We did not find a preview for #{title}."
+          end
       rescue
         puts "We're missing info!"
       end
@@ -117,12 +116,13 @@ module Saveable
   end
 
   def request(title)
-    request = Typhoeus::Request.new(
-    "https://www.googleapis.com/books/v1/volumes",
-    params: { 
-      q: CGI::escape("#{title}"), 
-      filter: "partial", 
-      key: ENV["GOOGLE_BOOKS_API_KEY"]
-    })
+    Typhoeus::Request.new(
+      "https://www.googleapis.com/books/v1/volumes",
+      params: {
+        q: CGI::escape("#{title}"),
+        filter: "partial",
+        key: ENV["GOOGLE_BOOKS_API_KEY"]
+      }
+    )
   end
 end
